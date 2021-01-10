@@ -5,8 +5,180 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUI"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel  Grid.Row="0"
+                     Grid.Column="1"
+                     Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="file test"
+                       Margin="10 0">
+            </TextBlock>
+            <Button Command="{Binding SelectFile}">
+                <StackPanel
+                     Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+                    <Image Source="/WPFUI;component/Resources/excel.ico" Height="25"/>
+                    <TextBlock FontSize="14">Оберіть Excel файл</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel  Grid.Row="0"
+                     Grid.Column="0"
+                     Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="Введення початкових даних">
+            </TextBlock>
+        </StackPanel>
+        <StackPanel  Grid.Row="1"
+                     Grid.Column="0"
+                     Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                Назва листа
+            </TextBlock>
+            <TextBox Height="23"
+                     Width="170"
+                     Margin="10,0">
+            </TextBox>
+        </StackPanel>
+        <StackPanel  Grid.Row="2"
+                     Grid.Column="0"
+                     Orientation="Vertical"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                Номери стовпців даних
+            </TextBlock>
+            <StackPanel
+                     Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+                <TextBlock>X:</TextBlock>
+                <TextBox Width="20"
+                         Margin="10 0"></TextBox>
+                <TextBlock>Y:</TextBlock>
+                <TextBox Width="20"
+                         Margin="10 0"></TextBox>
+                <TextBlock>Z:</TextBlock>
+                <TextBox Width="20"
+                         Margin="10 0"></TextBox>
+                <TextBlock>F:</TextBlock>
+                <TextBox Width="20"></TextBox>
+            </StackPanel>
+            
+        </StackPanel>
+        <StackPanel  Grid.Row="3"
+                     Grid.Column="0"
+                     Orientation="Vertical"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="0 10">
+               Середньоквадратичне відхилення
+            </TextBlock>
+            <StackPanel
+                     Orientation="Vertical">
+                <StackPanel
+                     Orientation="Horizontal"
+                     Margin="0 0 0 5">
+                    <TextBlock Width="50">Початок:</TextBlock>
+                    <TextBox Width="100"></TextBox>
+                </StackPanel>
+                <StackPanel
+                     Orientation="Horizontal"
+                     Margin="0 0 0 5">
+                    <TextBlock Width="50">Кінець:</TextBlock>
+                    <TextBox Width="100"></TextBox>
+                </StackPanel>
+                <StackPanel
+                     Orientation="Horizontal">
+                    <TextBlock Width="50">Крок:</TextBlock>
+                    <TextBox Width="100"></TextBox>
+                </StackPanel>
+                
+            </StackPanel>
+            
+        </StackPanel>
+        <StackPanel  Grid.Row="4"
+                     Grid.Column="0"
+                     Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                Поліном
+            </TextBlock>
+            <ComboBox Margin="10 0"
+                      VerticalAlignment="Top"
+                      Name="PolynomeComboBox">
+                <ComboBoxItem IsSelected="True" Content="y=ax+b"></ComboBoxItem>
+                <ComboBoxItem Content="y=ax2+bx+c"></ComboBoxItem>
+                <ComboBoxItem Content="y=ax3+bx2+cx+d"></ComboBoxItem>
+                <ComboBoxItem Content="y=ax4+bx3+cx2+dx+e"></ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel  Grid.Row="5"
+                     Grid.Column="0"
+                     Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+            <Button Command="{Binding Calculation}"
+                    FontSize="16">
+                Обчислити
+            </Button>
+        </StackPanel>
+        <ListView Grid.Row="1"
+                  Grid.Column="1"
+                  Grid.RowSpan="4"
+                  FontSize="13"
+                  ItemsSource="{Binding ResultList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding prevY}"
+                                    Header="Попередній Y"
+                                    Width="200"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding currY}"
+                                    Header="Отриманний Y"
+                                    Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="5"
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock FontSize="14">R = </TextBlock>
+            <TextBlock Text="{Binding R}" Margin="0 0 100 0" FontSize="14">0.1898398</TextBlock>
+            <Button Command="{Binding OpenGraph}"
+                    FontSize="14">
+                Отриманий графік
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>
