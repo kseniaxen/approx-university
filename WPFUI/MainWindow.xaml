@@ -27,14 +27,14 @@
                      VerticalAlignment="Center">
             <TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Text="file test"
+                       Name="pathFile"
                        Margin="10 0">
             </TextBlock>
-            <Button Command="{Binding SelectFile}">
+            <Button Name="SelectFile" Click="SelectFile_Click">
                 <StackPanel
-                     Orientation="Horizontal"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center">
+                             Orientation="Horizontal"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center">
                     <Image Source="/WPFUI;component/Resources/excel.ico" Height="25"/>
                     <TextBlock FontSize="14">Оберіть Excel файл</TextBlock>
                 </StackPanel>
@@ -61,7 +61,8 @@
             </TextBlock>
             <TextBox Height="23"
                      Width="170"
-                     Margin="10,0">
+                     Margin="10,0"
+                     Name="sheet">
             </TextBox>
         </StackPanel>
         <StackPanel  Grid.Row="2"
@@ -79,15 +80,19 @@
                      VerticalAlignment="Center">
                 <TextBlock>X:</TextBlock>
                 <TextBox Width="20"
-                         Margin="10 0"></TextBox>
+                         Margin="10 0"
+                         Name="colX"></TextBox>
                 <TextBlock>Y:</TextBlock>
                 <TextBox Width="20"
-                         Margin="10 0"></TextBox>
+                         Margin="10 0"
+                         Name="colY"></TextBox>
                 <TextBlock>Z:</TextBlock>
                 <TextBox Width="20"
-                         Margin="10 0"></TextBox>
+                         Margin="10 0"
+                         Name="colZ"></TextBox>
                 <TextBlock>F:</TextBlock>
-                <TextBox Width="20"></TextBox>
+                <TextBox Width="20"
+                         Name="colF"></TextBox>
             </StackPanel>
             
         </StackPanel>
@@ -107,18 +112,18 @@
                      Orientation="Horizontal"
                      Margin="0 0 0 5">
                     <TextBlock Width="50">Початок:</TextBlock>
-                    <TextBox Width="100"></TextBox>
+                    <TextBox Name="start" Width="100"></TextBox>
                 </StackPanel>
                 <StackPanel
                      Orientation="Horizontal"
                      Margin="0 0 0 5">
                     <TextBlock Width="50">Кінець:</TextBlock>
-                    <TextBox Width="100"></TextBox>
+                    <TextBox Name="end" Width="100"></TextBox>
                 </StackPanel>
                 <StackPanel
                      Orientation="Horizontal">
                     <TextBlock Width="50">Крок:</TextBlock>
-                    <TextBox Width="100"></TextBox>
+                    <TextBox Name="step" Width="100"></TextBox>
                 </StackPanel>
                 
             </StackPanel>
@@ -147,7 +152,7 @@
                      Orientation="Horizontal"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center">
-            <Button Command="{Binding Calculation}"
+            <Button Name="Calcul" Click="Calcul_Click"
                     FontSize="16">
                 Обчислити
             </Button>

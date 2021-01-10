@@ -17,6 +17,11 @@ namespace programm_3._0
         public double endPhi { get; set; }
         public double hPhi { get; set; }
 
+        public string numColX { get; set; }
+        public string numColY { get; set; }
+        public string numColZ { get; set; }
+        public string numColF { get; set; }
+
         private ReadTransformData readTransformData;
         private Data3D data3D;
         private Values values;
@@ -42,7 +47,7 @@ namespace programm_3._0
         //public List<double> resultArray_Approx;
         //public List<double> invertedArray_WithoutNull; //Перевернутый массив
         //public List<double> invertedArray_Approx;
-        public Run_xa_yb_c(string _mainPath, Microsoft.Office.Interop.Excel.Application _ObjExcel, Microsoft.Office.Interop.Excel.Workbook _ObjWorkBook, Microsoft.Office.Interop.Excel.Worksheet _ObjWorkSheet, double _startPhi, double _endPhi, double _hPhi)
+        public Run_xa_yb_c(string _mainPath, Microsoft.Office.Interop.Excel.Application _ObjExcel, Microsoft.Office.Interop.Excel.Workbook _ObjWorkBook, Microsoft.Office.Interop.Excel.Worksheet _ObjWorkSheet, double _startPhi, double _endPhi, double _hPhi, string numColX, string numColY, string numColZ, string numColF)
         {
             this.mainPath = _mainPath;
             this.ObjExcel = _ObjExcel;
@@ -68,7 +73,7 @@ namespace programm_3._0
         }
         private void Pre_GlobalInfo()
         {
-            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, false);
+            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF, false);
             fillArrayX = readTransformData.fillArrayX;
             fillArrayY = readTransformData.fillArrayY;
             twoDimArrayX1 = readTransformData.twoDimArrayX1;
@@ -81,7 +86,7 @@ namespace programm_3._0
 
         private void GlobalInfo()
         {
-            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, true);
+            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF, false);
         }
 
         public void RunApproximation_resultArray_WithoutNull(string _polynome)

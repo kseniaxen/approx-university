@@ -52,13 +52,18 @@ namespace programm_3._0
         public double end { get; set; }
         public double h { get; set; }
 
+        public string numColX { get; set; } //"S"
+        public string numColY { get; set; } //"D";
+        public string numColZ { get; set; } //"H";
+        public string numColF { get; set; }// "Q";
+
         private Microsoft.Office.Interop.Excel.Application ObjExcel;
         private Microsoft.Office.Interop.Excel.Workbook ObjWorkBook;
         private Microsoft.Office.Interop.Excel.Worksheet ObjWorkSheet;
 
         public int Draw;//Переменная для отображения двумерного массива
 
-        public ReadTransformData(string _pathToFile, Microsoft.Office.Interop.Excel.Application _ObjExcel, Microsoft.Office.Interop.Excel.Workbook _ObjWorkBook, Microsoft.Office.Interop.Excel.Worksheet _ObjWorkSheet, double _start, double _end, double _h, bool _key)
+        public ReadTransformData(string _pathToFile, Microsoft.Office.Interop.Excel.Application _ObjExcel, Microsoft.Office.Interop.Excel.Workbook _ObjWorkBook, Microsoft.Office.Interop.Excel.Worksheet _ObjWorkSheet, double _start, double _end, double _h, string numColX, string numColY, string numColZ, string numColF, bool _key)
         {
             this.fileName = _pathToFile;
 
@@ -69,6 +74,11 @@ namespace programm_3._0
             this.start = _start;
             this.end = _end;
             this.h = _h;
+
+            this.numColX = numColX;
+            this.numColY = numColY;
+            this.numColZ = numColZ;
+            this.numColF = numColF;
 
             dataFDim = new List<double>();
 
@@ -130,10 +140,7 @@ namespace programm_3._0
 
         public void assignMainParameters()
         {
-            string numColX = "S";
-            string numColY = "D";
-            string numColZ = "H";
-            string numColF = "Q";
+            
 
             Range usedColumnX = ObjWorkSheet.UsedRange.Columns[numColX];
             System.Array myvaluesX = (System.Array)usedColumnX.Cells.Value2;

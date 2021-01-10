@@ -12,6 +12,7 @@ namespace programm_3._0
     {
         static void Main(string[] args)
         { 
+            /*
             var mainPath = Path.Combine(Directory.GetCurrentDirectory(), "2020 — описательная статистика.xlsx");
             Microsoft.Office.Interop.Excel.Application ObjExcel;
             Microsoft.Office.Interop.Excel.Workbook ObjWorkBook;
@@ -40,6 +41,7 @@ namespace programm_3._0
 
             Console.WriteLine("End");
             Console.ReadLine();
+            */
         }
 
     }
