@@ -27,6 +27,8 @@ namespace WPFUI
         Microsoft.Office.Interop.Excel.Application ObjExcel;
         Microsoft.Office.Interop.Excel.Workbook ObjWorkBook;
         Microsoft.Office.Interop.Excel.Worksheet ObjWorkSheet;
+
+        public List<Item> Items;
         public string excelFile { get; set; }
         public string polynome { get; set; }
         public MainWindow()
@@ -48,6 +50,7 @@ namespace WPFUI
         private void Calcul_Click(object sender, RoutedEventArgs e)
         {
             //sheets "VN1_общ_граф"
+            //excelFile = "D:\\Programms\\Науч\\programm 3.7\\programm 3.0\\bin\\Debug\\2020 — описательная статистика.xlsx";
             ObjExcel = new Microsoft.Office.Interop.Excel.Application();
             ObjWorkBook = ObjExcel.Workbooks.Open(excelFile);
             ObjWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ObjWorkBook.Sheets[sheet.Text];
@@ -81,9 +84,32 @@ namespace WPFUI
                 }
                 run.RunApproximation_resultArray_Approx(polynome);
                 run.RunSwapApproximation(polynome, false);
-                run.writeDataZ_resultArray_Approx("graphic end.sce");
+                run.writeDataZ_resultArray_Approx("graphic.sce");
             }
-                
+            resultR1.Text = run.resultR1.ToString();
+            resultR2.Text = run.resultR2.ToString();
+            resultRavg.Text = run.resultRavg.ToString();
+            ListZ listZElem = new ListZ(run.listAppoxZ1, run.listAppoxZ2, run.listAppoxZavg);
+            Items = new List<Item>();
+            for (int i = 0; i < listZElem.listApproxZ1.Count; i++)
+            {
+                Items.Add(new Item { resZ1 = listZElem.listApproxZ1[i], resZ2 = listZElem.listApproxZ2[i], resZavg = listZElem.listApproxZavg[i] });
+            }
+            myDataGrid.ItemsSource = Items;
         }
+
+        private void OpenGraph_Click(object sender, RoutedEventArgs e)
+        {
+            String file = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "graphic.sce");
+            if (System.IO.File.Exists(file))
+                System.Diagnostics.Process.Start(file);
+            else MessageBox.Show("Файл не найден");
+        }
+    }
+    public class Item
+    {
+        public double resZ1 { get; set; }
+        public double resZ2 { get; set; }
+        public double resZavg { get; set; }
     }
 }

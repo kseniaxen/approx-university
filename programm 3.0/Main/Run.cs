@@ -23,6 +23,14 @@ namespace programm_3._0
         public string numColZ { get; set; }
         public string numColF { get; set; }
 
+        public double resultR1 { get; set; }
+        public double resultR2 { get; set; }
+        public double resultRavg { get; set; }
+
+        public List<double> listAppoxZ1 { get; set; }
+        public List<double> listAppoxZ2 { get; set; }
+        public List<double> listAppoxZavg { get; set; }
+
 
         private ReadTransformData readTransformData;
         private Data3D data3D;
@@ -153,6 +161,25 @@ namespace programm_3._0
                     arrSwap,
                     values.avgArrayResultBetweenTwoList(values.listArrayResult, arrSwap)
                     );
+            resultR1 = findValues.findRWithList(readTransformData.resultArray_Approx, values.listArrayResult);
+            resultR2 = findValues.findRWithList(readTransformData.resultArray_Approx, arrSwap);
+            resultRavg = findValues.findRWithList(readTransformData.resultArray_Approx, values.avgArrayResultBetweenTwoList(values.listArrayResult, arrSwap));
+            listAppoxZ1 = new List<double>();
+            listAppoxZ2 = new List<double>();
+            listAppoxZavg = new List<double>();
+            foreach (var item in values.listArrayResult)
+            {
+                //Console.WriteLine(item);
+                listAppoxZ1.Add(item);
+            }
+            foreach (var item in arrSwap)
+            {
+                listAppoxZ2.Add(item);
+            }
+            foreach (var item in values.avgArrayResultBetweenTwoList(values.listArrayResult, arrSwap))
+            {
+                listAppoxZavg.Add(item);
+            }
         }
     }
 }

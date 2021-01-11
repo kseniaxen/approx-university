@@ -14,7 +14,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.75*"/>
@@ -27,8 +27,7 @@
                      VerticalAlignment="Center">
             <TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Name="pathFile"
-                       Margin="10 0">
+                       Name="pathFile">
             </TextBlock>
             <Button Name="SelectFile" Click="SelectFile_Click">
                 <StackPanel
@@ -153,35 +152,44 @@
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center">
             <Button Name="Calcul" Click="Calcul_Click"
-                    FontSize="16">
+                    FontSize="20">
                 Обчислити
             </Button>
         </StackPanel>
-        <ListView Grid.Row="1"
+        <DataGrid Grid.Row="1"
                   Grid.Column="1"
                   Grid.RowSpan="4"
-                  FontSize="13"
-                  ItemsSource="{Binding ResultList}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding prevY}"
-                                    Header="Попередній Y"
-                                    Width="200"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding currY}"
-                                    Header="Отриманний Y"
-                                    Width="200"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+                  x:Name="myDataGrid"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Approx Z1" Binding="{Binding Path=resZ1}"/>
+                <DataGridTextColumn Header="Approx Z2" Binding="{Binding Path=resZ2}"/>
+                <DataGridTextColumn Header="Approx Z avg" Binding="{Binding Path=resZavg}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <StackPanel Grid.Row="5"
                     Grid.Column="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <TextBlock FontSize="14">R = </TextBlock>
-            <TextBlock Text="{Binding R}" Margin="0 0 100 0" FontSize="14">0.1898398</TextBlock>
-            <Button Command="{Binding OpenGraph}"
-                    FontSize="14">
+            <StackPanel Orientation="Vertical" Margin="0 0 25 0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14">Апрокс. 1 R =</TextBlock>
+                    <TextBlock Name="resultR1" FontSize="14"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14">Апрокс. 2 R =</TextBlock>
+                    <TextBlock Name="resultR2" FontSize="14"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14">Апрокс. серед. R =</TextBlock>
+                    <TextBlock Name="resultRavg" FontSize="14"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+           
+            <Button FontSize="14"
+                    Name="OpenGraph"
+                    Click="OpenGraph_Click">
                 Отриманий графік
             </Button>
         </StackPanel>
