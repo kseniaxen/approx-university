@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFUI"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Отримання залежності" Height="500" Width="800">
+        Title="Отримання залежностей" Height="500" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
