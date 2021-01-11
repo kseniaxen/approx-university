@@ -57,13 +57,16 @@ namespace programm_3._0
         public string numColZ { get; set; } //"H";
         public string numColF { get; set; }// "Q";
 
+        public double minF { get; set; } 
+        public double maxF { get; set; } 
+
         private Microsoft.Office.Interop.Excel.Application ObjExcel;
         private Microsoft.Office.Interop.Excel.Workbook ObjWorkBook;
         private Microsoft.Office.Interop.Excel.Worksheet ObjWorkSheet;
 
         public int Draw;//Переменная для отображения двумерного массива
 
-        public ReadTransformData(string _pathToFile, Microsoft.Office.Interop.Excel.Application _ObjExcel, Microsoft.Office.Interop.Excel.Workbook _ObjWorkBook, Microsoft.Office.Interop.Excel.Worksheet _ObjWorkSheet, double _start, double _end, double _h, string numColX, string numColY, string numColZ, string numColF, bool _key)
+        public ReadTransformData(string _pathToFile, Microsoft.Office.Interop.Excel.Application _ObjExcel, Microsoft.Office.Interop.Excel.Workbook _ObjWorkBook, Microsoft.Office.Interop.Excel.Worksheet _ObjWorkSheet, double _start, double _end, double _h, string numColX, string numColY, string numColZ, string numColF, double minF, double maxF, bool _key)
         {
             this.fileName = _pathToFile;
 
@@ -80,6 +83,9 @@ namespace programm_3._0
             this.numColZ = numColZ;
             this.numColF = numColF;
 
+            this.minF = minF;
+            this.maxF = maxF;
+
             dataFDim = new List<double>();
 
             //Считывание с Excel файла
@@ -89,7 +95,7 @@ namespace programm_3._0
             //Сортировка элементов 
             sortByParamMainParameters(dataFDim, sortArr);
             //Выборка элементов
-            convertArrayMainParameters(28000, 30000, sortArr, dataFDim);
+            convertArrayMainParameters(minF, maxF, sortArr, dataFDim);
 
             //Инициализация главных массивов X и Y
             fillArrayX = new List<double>();

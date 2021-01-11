@@ -6,14 +6,15 @@
         xmlns:local="clr-namespace:WPFUI"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Отримання залежності" Height="500" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -93,9 +94,28 @@
                 <TextBox Width="20"
                          Name="colF"></TextBox>
             </StackPanel>
-            
         </StackPanel>
         <StackPanel  Grid.Row="3"
+                     Grid.Column="0"
+                     Orientation="Vertical"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                Діапазон F
+            </TextBlock>
+            <StackPanel
+                     Orientation="Horizontal">
+                <TextBlock Width="70">Мінімум:</TextBlock>
+                <TextBox Name="minF" Width="75"></TextBox>
+            </StackPanel>
+            <StackPanel
+                     Orientation="Horizontal">
+                <TextBlock Width="70">Максимум:</TextBlock>
+                <TextBox Name="maxF" Width="75"></TextBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel  Grid.Row="4"
                      Grid.Column="0"
                      Orientation="Vertical"
                      HorizontalAlignment="Center"
@@ -128,7 +148,7 @@
             </StackPanel>
             
         </StackPanel>
-        <StackPanel  Grid.Row="4"
+        <StackPanel  Grid.Row="5"
                      Grid.Column="0"
                      Orientation="Horizontal"
                      HorizontalAlignment="Center"
@@ -146,14 +166,20 @@
                 <ComboBoxItem Content="y=ax4+bx3+cx2+dx+e"></ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <StackPanel  Grid.Row="5"
+        <StackPanel  Grid.Row="6"
                      Grid.Column="0"
                      Orientation="Horizontal"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center">
             <Button Name="Calcul" Click="Calcul_Click"
                     FontSize="20">
-                Обчислити
+                <StackPanel
+                             Orientation="Horizontal"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center">
+                    <Image Source="/WPFUI;component/Resources/done.ico" Height="30"/>
+                    <TextBlock FontSize="20">Обчислити</TextBlock>
+                </StackPanel>
             </Button>
         </StackPanel>
         <DataGrid Grid.Row="1"

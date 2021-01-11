@@ -55,7 +55,7 @@ namespace WPFUI
             ObjWorkBook = ObjExcel.Workbooks.Open(excelFile);
             ObjWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ObjWorkBook.Sheets[sheet.Text];
 
-            programm_3._0.Run run = new programm_3._0.Run(excelFile, ObjExcel, ObjWorkBook, ObjWorkSheet, Convert.ToDouble(start.Text), Convert.ToDouble(end.Text), Convert.ToDouble(step.Text), colX.Text, colY.Text, colZ.Text, colF.Text );
+            programm_3._0.Run run = new programm_3._0.Run(excelFile, ObjExcel, ObjWorkBook, ObjWorkSheet, Convert.ToDouble(start.Text), Convert.ToDouble(end.Text), Convert.ToDouble(step.Text), colX.Text, colY.Text, colZ.Text, colF.Text, Convert.ToDouble(minF.Text), Convert.ToDouble(maxF.Text) );
             ObjWorkBook.Close(false);
             ObjExcel.Quit();
             ObjWorkSheet = null;

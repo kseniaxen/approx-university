@@ -27,6 +27,9 @@ namespace programm_3._0
         public double resultR2 { get; set; }
         public double resultRavg { get; set; }
 
+        public double minF { get; set; }
+        public double maxF { get; set; }
+
         public List<double> listAppoxZ1 { get; set; }
         public List<double> listAppoxZ2 { get; set; }
         public List<double> listAppoxZavg { get; set; }
@@ -54,7 +57,7 @@ namespace programm_3._0
         public List<double> resultArray;
         public int Draw { get; set; }
 
-        public Run(string _mainPath, Microsoft.Office.Interop.Excel.Application _ObjExcel, Microsoft.Office.Interop.Excel.Workbook _ObjWorkBook, Microsoft.Office.Interop.Excel.Worksheet _ObjWorkSheet, double _startPhi, double _endPhi, double _hPhi, string numColX, string numColY, string numColZ, string numColF)
+        public Run(string _mainPath, Microsoft.Office.Interop.Excel.Application _ObjExcel, Microsoft.Office.Interop.Excel.Workbook _ObjWorkBook, Microsoft.Office.Interop.Excel.Worksheet _ObjWorkSheet, double _startPhi, double _endPhi, double _hPhi, string numColX, string numColY, string numColZ, string numColF, double minF, double maxF)
         {
             this.mainPath = _mainPath;
             this.ObjExcel = _ObjExcel;
@@ -70,6 +73,9 @@ namespace programm_3._0
             this.numColZ = numColZ;
             this.numColF = numColF;
 
+            this.minF = minF;
+            this.maxF = maxF;
+
             fillArrayX = new List<double>();
             fillArrayY = new List<double>();
             twoDimArrayX1 = new List<double>();
@@ -83,7 +89,7 @@ namespace programm_3._0
         }
         private void Pre_GlobalInfo()
         {
-            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF, false);
+            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF,minF, maxF, false);
             fillArrayX = readTransformData.fillArrayX;
             fillArrayY = readTransformData.fillArrayY;
             twoDimArrayX1 = readTransformData.twoDimArrayX1;
@@ -96,7 +102,7 @@ namespace programm_3._0
 
         private void GlobalInfo()
         {
-            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF, false);
+            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF,minF, maxF, false);
         }
 
         public void RunApproximation_resultArray_WithoutNull(string _polynome)

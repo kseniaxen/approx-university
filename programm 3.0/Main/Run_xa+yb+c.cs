@@ -22,6 +22,9 @@ namespace programm_3._0
         public string numColZ { get; set; }
         public string numColF { get; set; }
 
+        public double minF { get; set; }
+        public double maxF { get; set; }
+
         private ReadTransformData readTransformData;
         private Data3D data3D;
         private Values values;
@@ -73,7 +76,7 @@ namespace programm_3._0
         }
         private void Pre_GlobalInfo()
         {
-            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF, false);
+            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF, minF, maxF, false);
             fillArrayX = readTransformData.fillArrayX;
             fillArrayY = readTransformData.fillArrayY;
             twoDimArrayX1 = readTransformData.twoDimArrayX1;
@@ -86,7 +89,7 @@ namespace programm_3._0
 
         private void GlobalInfo()
         {
-            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF, false);
+            readTransformData = new ReadTransformData(mainPath, ObjExcel, ObjWorkBook, ObjWorkSheet, startPhi, endPhi, hPhi, numColX, numColY, numColZ, numColF, minF, maxF, false);
         }
 
         public void RunApproximation_resultArray_WithoutNull(string _polynome)

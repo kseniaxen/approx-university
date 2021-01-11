@@ -37,6 +37,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>graph.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -107,9 +110,17 @@
       <Name>programm 3.0</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="graph.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\excel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\done.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\graph.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
